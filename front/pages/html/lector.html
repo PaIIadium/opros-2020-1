@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <!-- <script>const teacherData = {}</script>-->
+        <meta charset="UTF-8">
+        <script type="module" src="../../node_modules/chart.js/dist/Chart.min.js"></script>
+        <script type="module" src="../scripts/initialize.js"></script>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="lector.css">
+        <script>
+          const colorGraph = 'rgba(172,172,172,0.7)';
+          const colorText = 'rgb(255,255,255)';
+          const colorLines = 'rgb(255,255,255)';
+        </script>
+    </head>
+
+    <body>
+        <div class="form" id="form">
+            <div class="left-info">
+                <div class="teacher-face-and-name" id="teacher">
+                    <div class="img-container">
+                        <img class="teacher-face" src="" alt="teacher's face" id="teacher-face">
+                    </div>
+                    <h1 class="teacher-name" id='teacher-name'>зав. каф. Селіванов В. Л.</h1>
+                </div>
+                <div class="general-numbers">
+                    <div class="graphs">
+                      <div class="continuation-percent-div">
+                        <p class="continuation-percent" id="want-to-continue-lector">75%</p>
+                        <p class="continuation-percent-description">хочуть, щоб викладач продовжував викладати</p>
+                      </div>
+                    </div>
+                    <div class="graphs">
+                      <div>
+                        <p class="first-string" id="meaningfulness">4.6</p>
+                        <p class="first-string-description">Змістовність лекцій</p>
+                      </div>
+                      <div>
+                        <p class="first-string" id="grading-system">2.5</p>
+                        <p class="first-string-description">Система оцінювання</p>
+                      </div>
+                    </div>
+                    <div class="graphs">
+                      <div>
+                        <p class="second-string" id="relevance">3.4</p>
+                        <p class="second-string-description">Актуальність матеріалу</p>
+                      </div>
+                      <div>
+                        <p class="second-string" id="skills">4.2</p>
+                        <p class="second-string-description">Володіння матеріалом</p>
+                      </div>
+                    </div>
+                    <div class="respondents-div">
+                        <p class="respondents-count" id="responses">5/4/42</p>
+                        <p class="respondents-count-description" id="description-resp">кількість опитаних <br> (лектор/практик/лектор+практик)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-info">
+                <div class="radial">
+                    <canvas id="radial-diagram"></canvas>
+                </div>
+                <div class="graphs">
+                    <div class="graph-education">
+                        <div class="helper-div">
+                            <canvas class="graph" id="education-quality-lector"></canvas>
+                        </div>
+                        <p class="education-level">Задоволення викладанням дисципліни</p>
+                    </div>
+                    <div class="graph-education">
+                        <div class="helper-div">
+                            <canvas class="graph" id="self-assesment"></canvas>
+                        </div>
+                        <p class="education-level">Самооцінка власних знань після проходження курсу</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="semester-and-year">
+          <p>2020-2021, І семестр</p>
+        </div>
+        <div class="popup" id="popup">
+            <div class="manage-zone">
+                <form action="/submit" method="GET">
+                    <textarea name="row-number" id="row-number" placeholder="Row number (row with teacher)"></textarea>
+                    <textarea name="teachers-table-url" id="table-teachers-URL" placeholder="General table (teachers list)">https://docs.google.com/spreadsheets/d/1Q32bssL7mC7BcTqvIOLUMxnMEUptPtxaXu6AwBRK9qM/edit#gid=0</textarea>
+                    <input type="submit" id="draw-button" value="Draw!"/>
+                </form>
+                <button onclick="togglePopup()" id="popup-button">Скрыть</button>
+            </div>
+            <output id="list"></output>
+        </div>
+        <script>
+            let activePopup = true;
+            const togglePopup = () => {
+              if (activePopup === true) {
+                document.getElementById('popup').style.display = 'none';
+              }
+              else {
+                document.getElementById('popup').style.display = 'flex';
+              }
+              activePopup = !activePopup;
+            }
+        </script>
+    </body>
+</html>

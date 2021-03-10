@@ -1,0 +1,19 @@
+{
+  "name": "opros2020_2sem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.9.4",
+    "googleapis": "^67.0.0",
+    "puppeteer": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.9.30"
+  }
+}
