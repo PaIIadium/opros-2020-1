@@ -1,6 +1,6 @@
 *{
-  --font_color: #fee6ff;
-  --background_color: #19081a;
+  --font_color: #e6f7ff;
+  --background_color: #08141a;
 }
 
 body {
@@ -46,17 +46,23 @@ body {
 }
 
 .teacher-name {
-    text-align: center;
-    font-size: 35px;
-    height: 70px;
-    margin-top: 55px;
+  text-align: center;
+  font-size: 35px;
+  height: 70px;
+  margin-top: 55px;
+}
+
+.teacher-type {
+  text-align: center;
+  font-size: 35px;
+  height: 35px;
+  margin-top: 15px;
 }
 
 .left-info {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    /*background: yellowgreen;*/
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .right-info {
@@ -66,7 +72,6 @@ body {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-    /*background: brown;*/
 }
 
 .respondents-count {
@@ -75,14 +80,14 @@ body {
 }
 
 .respondents-count-description {
-  font-size: 22px;
+  font-size: 24px;
   text-align: left;
   font-style: normal;
   font-weight: normal;
 }
 
 .radial {
-    height: 758px;
+  height: 758px;
 }
 
 .general-numbers {
@@ -90,8 +95,8 @@ body {
   justify-content: space-between;
   flex-direction: column;
   flex-flow: column nowrap;
-  height: 56%;
-  padding-top: 50px;
+  height: 54%;
+  padding-top: 30px;
 }
 
 .graph-education {
@@ -183,7 +188,7 @@ body {
 }
 
 .continuation-percent-description {
-  font-size: 22px;
+  font-size: 24px;
   font-style: normal;
   font-weight: normal;
   color: var(--font_color);
@@ -200,7 +205,7 @@ body {
 }
 
 .first-string-description {
-  font-size: 22px;
+  font-size: 24px;
   font-style: normal;
   font-weight: normal;
   color: var(--font_color);
@@ -210,14 +215,12 @@ body {
 
 .second-string {
   font-size: 70px;
-  /* padding: 0 0 0 0;
-  margin: 0; */
   line-height: normal;
   text-align: center;
 }
 
 .second-string-description {
-  font-size: 22px;
+  font-size: 24px;
   font-style: normal;
   font-weight: normal;
   color: var(--font_color);
@@ -234,4 +237,3 @@ body {
   color: var(--font_color);
   background-color: var(--background_color);
 }
-

@@ -20,7 +20,6 @@ const practicCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/p
 const englishCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/english.css'));
 const resetCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/reset.css'));
 const chartJs = fs.readFileSync(path.resolve(__dirname, '../node_modules/chart.js/dist/Chart.min.js'));
-const ajaxJs = fs.readFileSync(path.resolve(__dirname, '../front/scripts/ajax.js'));
 const initializeJs = fs.readFileSync(path.resolve(__dirname, '../front/scripts/initialize.js'));
 const radialCaptionsJs = fs.readFileSync(path.resolve(__dirname, '../front/scripts/radial_captions.js'));
 const responsesJs = fs.readFileSync(path.resolve(__dirname, '../front/scripts/responses.js'));
@@ -98,10 +97,6 @@ const requestHandler = async (request, response) => {
         case '/scripts/teacher_info.js':
           response.setHeader('Content-type', 'text/javascript')
           response.write(teacherInfoJs);
-          break;
-        case '/scripts/ajax.js':
-          response.setHeader('Content-type', 'text/javascript')
-          response.write(ajaxJs);
           break;
         case '/scripts/initialize.js':
           response.setHeader('Content-type', 'text/javascript')

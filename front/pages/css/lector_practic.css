@@ -31,7 +31,6 @@ body {
 .teacher-face-and-name {
   display: flex;
   flex-direction: column;
-
 }
 
 .teacher-face {
@@ -47,14 +46,21 @@ body {
 }
 
 .teacher-name {
-    text-align: center;
-    font-size: 35px;
-    height: 70px;
-    margin-top: 55px;
+  text-align: center;
+  font-size: 35px;
+  height: 70px;
+  margin-top: 55px;
+}
+
+.teacher-type {
+  text-align: center;
+  font-size: 35px;
+  height: 35px;
+  margin-top: 15px;
 }
 
 .left-info {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .right-info {
@@ -72,7 +78,7 @@ body {
 }
 
 .respondents-count-description {
-  font-size: 22px;
+  font-size: 24px;
   text-align: left;
   font-style: normal;
   font-weight: normal;
@@ -87,8 +93,8 @@ body {
   justify-content: space-between;
   flex-direction: column;
   flex-flow: column nowrap;
-  height: 56%;
-  padding-top: 50px;
+  height: 55%;
+  padding-top: 30px;
 }
 
 .graph-education {
@@ -147,7 +153,7 @@ body {
 }
 
 .helper-div {
-  height: 280px
+  height: 417px
 }
 
 .popup {
@@ -174,7 +180,7 @@ body {
 }
 
 .continuation-percent-description {
-  font-size: 22px;
+  font-size: 24px;
   font-style: normal;
   font-weight: normal;
   color: var(--font_color);
@@ -191,7 +197,7 @@ body {
 }
 
 .first-string-description {
-  font-size: 22px;
+  font-size: 24px;
   font-style: normal;
   font-weight: normal;
   color: var(--font_color);
@@ -206,7 +212,7 @@ body {
 }
 
 .second-string-description {
-  font-size: 22px;
+  font-size: 24px;
   font-style: normal;
   font-weight: normal;
   color: var(--font_color);
@@ -223,4 +229,3 @@ body {
   color: var(--font_color);
   background-color: var(--background_color);
 }
-

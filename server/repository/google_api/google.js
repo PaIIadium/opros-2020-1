@@ -99,6 +99,7 @@ const writeResponsesFromTable = responsesTable => {
 }
 
 const addTeacherInfo = (result, row) => {
+  console.log(row)
   result.teacherName = row[teacherNameIndex]
   result.teacherPseudonym = row[teacherPseudonymIndex]
   result.picUrl = row[teacherPicUrlIndex]

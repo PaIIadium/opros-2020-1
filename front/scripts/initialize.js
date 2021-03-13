@@ -8,16 +8,22 @@ import { teacherInfo } from './teacher_info.js';
 
 const percentType = 'percent'
 const markType = 'mark'
+const lectorType = 'lector'
+const practicType = 'practic'
+const lectorPracticType = 'lectorPractic'
+const englishType = 'english'
 
 console.log(teacherData)
-barChart(('education-quality-lector'), teacherData.barChart['Якість викладання [Лек.]'])
-barChart(('education-quality-practic'), teacherData.barChart['Якість викладання [Прак.]'])
-barChart(('self-assesment'), teacherData.barChart['Як ви оцінюєте свій рівень'])
+barChart(('education-quality-lector'), teacherData.barChart['Якість викладання [Лек.]'], teacherData.type)
+barChart(('education-quality-practic'), teacherData.barChart['Якість викладання [Прак.]'], teacherData.type)
+barChart(('self-assesment'), teacherData.barChart['Як ви оцінюєте свій рівень'], teacherData.type)
 singleMark('want-to-continue-lector', teacherData.singleMark['Викладач продовжував викладати [Лек.]'], percentType)
 singleMark('want-to-continue-practic', teacherData.singleMark['Викладач продовжував викладати [Прак.]'], percentType)
 singleMark('meaningfulness', teacherData.singleMark['Чи володіє матеріалом'], markType)
 singleMark('grading-system', teacherData.singleMark['Система оцінювання'], markType)
-singleMark('relevance', teacherData.singleMark['Актуальність матеріалу'], markType)
+singleMark('cheating-lector-practic', (teacherData.radial['Бали без знань [Лек.]'] + teacherData.radial['Бали без знань [Прак.]']) / 2, markType)
+singleMark('cheating-lector', teacherData.singleMark['Бали без знань [Лек.]'], markType)
+singleMark('cheating-practic', teacherData.singleMark['Бали без знань [Прак.]'], markType)
 singleMark('skills', teacherData.singleMark['Чи володіє матеріалом'], markType)
 responses('responses', teacherData.responses)
 radialDiagram('radial-diagram', teacherData.radial, teacherData.type);

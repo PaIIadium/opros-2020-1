@@ -2,27 +2,27 @@
 
 const mapDiagrams = new Map();
 
-const backgroundColor = '#dd48dd';
-const fontColor = '#cdeeff';
-
-const extractData = obj => {
-  return [obj[1], obj[2], obj[3], obj[4], obj[5]]
+const styles = {
+  lector: {
+    backgroundColor: '#48abdd',
+    fontColor: '#e6f7ff'
+  },
+  practic: {
+    backgroundColor: '#dfdf39',
+    fontColor: '#ffffea'
+  },
+  lectorPractic: {
+    backgroundColor: '#dd48dd',
+    fontColor: '#fee6ff'
+  },
+  english: {
+    backgroundColor: '#56cc91',
+    fontColor: '#e7fff3'
+  }
 }
 
-export const barChart = (id, dataObject) => {
-  if (document.getElementById(id) === null) return
-  const data = {
-    labels: ['1', '2', '3', '4', '5'],
-    datasets: [{
-      data: extractData(dataObject),
-      backgroundColor: backgroundColor,
-      // borderColor: fontColor,
-      // borderWidth: '3',
-      id: 'y-axis-marks'
-    }]
-  };
-
-  const barChartOptions = {
+const getBarChartOptions = type => (
+  {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
@@ -30,11 +30,9 @@ export const barChart = (id, dataObject) => {
         barPercentage: 1,
         categoryPercentage: 0.6,
         ticks: {
-          fontColor: fontColor,
-          // fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+          fontColor: styles[type].fontColor,
           fontSize: 25,
           beginAtZero: true,
-          backdropColor: '#30344A',
           maxTicksLimit: 6
         },
         gridLines: {
@@ -44,8 +42,7 @@ export const barChart = (id, dataObject) => {
       xAxes: [{
         id: 'y-axis-marks',
         ticks: {
-          fontColor: fontColor,
-          // fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+          fontColor: styles[type].fontColor,
           fontSize: 25,
           beginAtZero: true
         },
@@ -57,6 +54,21 @@ export const barChart = (id, dataObject) => {
     legend: {
       display: false
     }
+  })
+
+const extractData = obj => {
+  return [obj[1], obj[2], obj[3], obj[4], obj[5]]
+}
+
+export const barChart = (id, dataObject, type) => {
+  if (document.getElementById(id) === null) return
+  const data = {
+    labels: ['1', '2', '3', '4', '5'],
+    datasets: [{
+      data: extractData(dataObject),
+      backgroundColor: styles[type].backgroundColor,
+      id: 'y-axis-marks'
+    }]
   };
 
   if (!mapDiagrams.has(id)) {
@@ -64,7 +76,7 @@ export const barChart = (id, dataObject) => {
     const chart = new Chart(linearCanvas, {
       type: 'bar',
       data: data,
-      options: barChartOptions
+      options: getBarChartOptions(type)
     });
     mapDiagrams.set(id, chart);
   } else {
