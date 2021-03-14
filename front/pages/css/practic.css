@@ -94,7 +94,7 @@ body {
   justify-content: space-between;
   flex-direction: column;
   flex-flow: column nowrap;
-  height: 54%;
+  height: 53.5%;
   padding-top: 30px;
 }
 
@@ -225,8 +225,9 @@ body {
 .semester-and-year {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   height: 100px;
+  padding-bottom: 20px;
   font-size: 30px;
   color: var(--font_color);
   background-color: var(--background_color);

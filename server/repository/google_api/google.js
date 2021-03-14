@@ -27,8 +27,10 @@ const englishFormString = 'Англійська мова'
 const defaultFormString = 'Лектор і практик'
 const lectorPracticFormLength = 51
 const englishFormLength = 15
-const englishHorizontalOffset = 1
-const defaultHorizontalOffset = 2
+const lectorRange = [2, 18]
+const lectorPracticRange = [18, 41]
+const practicRange = [41, 51]
+const englishRange = [1, 15]
 const verticalOffset = 1
 
 const tableCache = new Map()
@@ -55,12 +57,18 @@ const formatAnswer = (answer, question) => {
   return parseInt(answer.charAt(0))
 }
 
-const writeAnswersFromResponse = (response, result, matching, keys, offset) => {
-  response.slice(offset).forEach((answer, index) => {
+const writeAnswersFromResponse = (response, result, matching, keys, range) => {
+  keys = keys.slice(...range)
+  response.slice(...range).forEach((answer, index) => {
     if (answer !== '') {
-      const question = matching[keys[index + offset]]
-      result[question].push(
-        formatAnswer(answer, question))
+      const question = matching[keys[index]]
+      try {
+        result[question].push(
+          formatAnswer(answer, question))
+      } catch (err) {
+        console.log('Maybe some response has been updated')
+        throw new Error(err)
+      }
     }
   })
 }
@@ -74,7 +82,7 @@ const writeResponsesFromTable = responsesTable => {
     result.englishResponses = responsesTable.length - verticalOffset
     for (const response of responsesTable.slice(verticalOffset)) {
       writeAnswersFromResponse(response,
-        result.english, matching.english, keys, englishHorizontalOffset)
+        result.english, matching.english, keys, englishRange)
     }
   } else if (formType === defaultFormString) {
     for (const response of responsesTable.slice(verticalOffset)) {
@@ -82,15 +90,15 @@ const writeResponsesFromTable = responsesTable => {
       if (responseType === lectorString) {
         ++result.lectorResponses
         writeAnswersFromResponse(response,
-          result.lector, matching.lector, keys, defaultHorizontalOffset)
+          result.lector, matching.lector, keys, lectorRange)
       } else if (responseType === lectorPracticString) {
         ++result.lectorPracticResponses
         writeAnswersFromResponse(response,
-          result.lectorPractic, matching.lectorPractic, keys, defaultHorizontalOffset)
+          result.lectorPractic, matching.lectorPractic, keys, lectorPracticRange)
       } else if (responseType === practicString) {
         ++result.practicResponses
         writeAnswersFromResponse(response,
-          result.practic, matching.practic, keys, defaultHorizontalOffset)
+          result.practic, matching.practic, keys, practicRange)
       }
     }
   }
