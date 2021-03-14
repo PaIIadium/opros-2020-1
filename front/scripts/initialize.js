@@ -8,12 +8,8 @@ import { teacherInfo } from './teacher_info.js';
 
 const percentType = 'percent'
 const markType = 'mark'
-const lectorType = 'lector'
-const practicType = 'practic'
-const lectorPracticType = 'lectorPractic'
-const englishType = 'english'
+const defaultPicUrl = 'https://pbs.twimg.com/profile_images/908388016149864448/xJNGKWP9_400x400.jpg'
 
-console.log(teacherData)
 barChart(('education-quality-lector'), teacherData.barChart['Якість викладання [Лек.]'], teacherData.type)
 barChart(('education-quality-practic'), teacherData.barChart['Якість викладання [Прак.]'], teacherData.type)
 barChart(('self-assesment'), teacherData.barChart['Як ви оцінюєте свій рівень'], teacherData.type)
@@ -28,4 +24,4 @@ singleMark('skills', teacherData.singleMark['Чи володіє матеріа�
 responses('responses', teacherData.responses)
 radialDiagram('radial-diagram', teacherData.radial, teacherData.type);
 
-teacherInfo('teacher-face', 'teacher-name', teacherData);
+teacherInfo('teacher-face', 'teacher-name', teacherData, defaultPicUrl);

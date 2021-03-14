@@ -70,7 +70,6 @@ const addTeacherInfo = (result, teacherName) => {
 
 const getAnswers = async teacherName => {
   const sections = snapObj.filter(section => section.teacher_name === teacherName)
-  // console.dir(JSON.stringify(snapObj))
   const result = createResult(sections)
   addTeacherInfo(result, teacherName)
   return result

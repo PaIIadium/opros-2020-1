@@ -9,15 +9,15 @@ const lectorPracticHtml = fs.readFileSync(path.resolve(__dirname, '../front/page
 const lectorHtml = fs.readFileSync(path.resolve(__dirname, '../front/pages/html/lector.html'));
 const practicHtml = fs.readFileSync(path.resolve(__dirname, '../front/pages/html/practic.html'));
 const englishHtml = fs.readFileSync(path.resolve(__dirname, '../front/pages/html/english.html'));
+const lectorPracticCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/lector_practic.css'));
+const lectorCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/lector.css'));
+const practicCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/practic.css'));
+const englishCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/english.css'));
 
 const barChartJs = fs.readFileSync(path.resolve(__dirname, '../front/scripts/bar_chart.js'));
 const radialJs = fs.readFileSync(path.resolve(__dirname, '../front/scripts/radial.js'));
 const teacherInfoJs = fs.readFileSync(path.resolve(__dirname, '../front/scripts/teacher_info.js'));
 const singleMarkJs = fs.readFileSync(path.resolve(__dirname, '../front/scripts/single_mark.js'));
-const lectorPracticCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/lector_practic.css'));
-const lectorCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/lector.css'));
-const practicCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/practic.css'));
-const englishCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/english.css'));
 const resetCss = fs.readFileSync(path.resolve(__dirname, '../front/pages/css/reset.css'));
 const chartJs = fs.readFileSync(path.resolve(__dirname, '../node_modules/chart.js/dist/Chart.min.js'));
 const initializeJs = fs.readFileSync(path.resolve(__dirname, '../front/scripts/initialize.js'));
@@ -45,11 +45,13 @@ const onSubmitHandler = async (request, response) => {
   const data = await requestData(parseInt(rowNumber), teachersTableUrl)
   const computedResult = computeResult(data)
   let html;
-  if (computedResult.type === lectorType) html = lectorHtml
+  if (computedResult === null) html = ''
+  else if (computedResult.type === lectorType) html = lectorHtml
   else if (computedResult.type === practicType) html = practicHtml
   else if (computedResult.type === lectorPracticType) html = lectorPracticHtml
   else if (computedResult.type === englishType) html = englishHtml
   else html = ''
+
   const htmlWithTeacherData = addTeacherDataToHtml(html.toString(), computedResult)
   response.write(htmlWithTeacherData)
 }

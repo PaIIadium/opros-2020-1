@@ -6,7 +6,6 @@ const { google } = require('googleapis');
 const { authorizeAsync } = require('./authorization')
 const path = require('path')
 const templateJson = fs.readFileSync(path.resolve(__dirname, '../template.json'))
-// const resultExample = JSON.parse(templateJson)
 const matchingJson = fs.readFileSync(path.resolve(__dirname, './matching.json'))
 const matching = JSON.parse(matchingJson)
 
@@ -99,7 +98,6 @@ const writeResponsesFromTable = responsesTable => {
 }
 
 const addTeacherInfo = (result, row) => {
-  console.log(row)
   result.teacherName = row[teacherNameIndex]
   result.teacherPseudonym = row[teacherPseudonymIndex]
   result.picUrl = row[teacherPicUrlIndex]
@@ -139,7 +137,6 @@ const getAnswersQuantity = async (teacherName, url) => {
     tableCache.set(url, generalTable)
   }
   const row = generalTable.filter(row => row[teacherNameIndex] === teacherName)[0]
-  console.log()
   const english = teacherName.match('ENG') ? parseInt(row[lectorCountIndex]) : 0
   const lector = english ? 0 : parseInt(row[lectorCountIndex])
   const practic = parseInt(row[practicCountIndex])
