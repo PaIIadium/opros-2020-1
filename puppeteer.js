@@ -3,10 +3,8 @@
 const NAME_INDEX = 1
 const TIMEOUT = 1000;
 
-const fs = require('fs');
-const path = require('path');
-const configJson = fs.readFileSync(path.resolve(__dirname, './config.json'));
-const config = JSON.parse(configJson);
+const { config } = require('./utils/config_loader')
+
 const teachersTableUrl = config.teachersTableURL;
 const startRowNumber = config.startRowNumber;
 

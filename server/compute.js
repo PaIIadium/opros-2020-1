@@ -5,8 +5,7 @@ const path = require('path')
 const categoriesJson = fs.readFileSync(path.resolve(__dirname, './layout_categories.json'))
 const categories = JSON.parse(categoriesJson)
 
-const configJson = fs.readFileSync(path.resolve(__dirname, '../config.json'));
-const config = JSON.parse(configJson);
+const { config } = require('../utils/config_loader')
 const minAnswers = config.minAnswers;
 
 const lectorType = 'lector'
