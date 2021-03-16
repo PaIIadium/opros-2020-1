@@ -10,11 +10,11 @@ const matchingJson = fs.readFileSync(path.resolve(__dirname, './matching.json'))
 const matching = JSON.parse(matchingJson)
 
 const idTableRegExp = /(?<=https:\/\/docs\.google\.com\/spreadsheets\/d\/)[^/]+/
-const generalTableRange = 'Sheet1!A1:I'
-const teacherTableRange = 'Form Responses 1!A1:AY'
+const teachersTableRange = 'Sheet1!A1:I'
+const responsesTableRange = 'Form Responses 1!A1:AY'
 const teacherNameIndex = 0
 const teacherPseudonymIndex = 1
-const teacherTableUrlIndex = 4
+const responsesTableUrlIndex = 4
 const lectorCountIndex = 5
 const practicCountIndex = 6
 const lectorPracticCountIndex = 7
@@ -121,14 +121,14 @@ const getOauthClient = async () => {
 const getAnswers = async (rowNumber, url) => {
   rowNumber -= 1
   try {
-    let generalTable = tableCache.get(url)
-    if (!generalTable) {
-      generalTable = await getSpreadsheet(await getOauthClient(), url, generalTableRange)
-      tableCache.set(url, generalTable)
+    let teachersTable = tableCache.get(url)
+    if (!teachersTable) {
+      teachersTable = await getSpreadsheet(await getOauthClient(), url, teachersTableRange)
+      tableCache.set(url, teachersTable)
     }
-    const row = generalTable[rowNumber]
-    const teacherTableUrl = row[teacherTableUrlIndex]
-    const responsesTable = await getSpreadsheet(await getOauthClient(), teacherTableUrl, teacherTableRange)
+    const row = teachersTable[rowNumber]
+    const responsesTableUrl = row[responsesTableUrlIndex]
+    const responsesTable = await getSpreadsheet(await getOauthClient(), responsesTableUrl, responsesTableRange)
     const result = writeResponsesFromTable(responsesTable)
     addTeacherInfo(result, row)
     return result
@@ -139,12 +139,12 @@ const getAnswers = async (rowNumber, url) => {
 };
 
 const getAnswersQuantity = async (teacherName, url) => {
-  let generalTable = tableCache.get(url)
-  if (!generalTable) {
-    generalTable = await getSpreadsheet(await getOauthClient(), url, generalTableRange)
-    tableCache.set(url, generalTable)
+  let teachersTable = tableCache.get(url)
+  if (!teachersTable) {
+    teachersTable = await getSpreadsheet(await getOauthClient(), url, teachersTableRange)
+    tableCache.set(url, teachersTable)
   }
-  const row = generalTable.filter(row => row[teacherNameIndex] === teacherName)[0]
+  const row = teachersTable.filter(row => row[teacherNameIndex] === teacherName)[0]
   const english = teacherName.match('ENG') ? parseInt(row[lectorCountIndex]) : 0
   const lector = english ? 0 : parseInt(row[lectorCountIndex])
   const practic = parseInt(row[practicCountIndex])
@@ -153,7 +153,7 @@ const getAnswersQuantity = async (teacherName, url) => {
 }
 
 const getTable = async url => {
-  const table = await getSpreadsheet(await getOauthClient(), url, generalTableRange)
+  const table = await getSpreadsheet(await getOauthClient(), url, teachersTableRange)
   return table
 }
 

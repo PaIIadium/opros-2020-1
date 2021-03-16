@@ -1,5 +1,6 @@
 {
-    "teachersTableURL": "https://docs.google.com/spreadsheets/d/11wf1pifYHox9x9T6EnQlsrQgWtDSmafvQBmoiYhe-dQ/edit#gid=0",
+    "teachersTableURL": "https://docs.google.com/spreadsheets/d/1gS96vsN03td7G0Bc7qr3ar0X6Ekn24DeZOTcYJAZq3k/edit#gid=0",
     "minAnswers": 10,
-    "startRowNumber": 2
+    "startRowNumber": 2,
+    "endRowNumber": 79
 }
