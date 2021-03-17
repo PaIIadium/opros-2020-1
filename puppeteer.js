@@ -15,7 +15,7 @@ const buttonText = 'Скрыть'
 
 const getPicture = async (url, page, pictureName) => {
   await page.goto(url);
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise(resolve => setTimeout(resolve, 1100))
   const innerHtml = await page.evaluate(() => document.body.innerHTML)
   if (innerHtml === '') return
   const [button] = await page.$x(`//button[contains(., ${buttonText})]`);

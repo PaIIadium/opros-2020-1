@@ -15,7 +15,7 @@ barChart(('education-quality-practic'), teacherData.barChart['Якість ви�
 barChart(('self-assesment'), teacherData.barChart['Як ви оцінюєте свій рівень'], teacherData.type)
 singleMark('want-to-continue-lector', teacherData.singleMark['Викладач продовжував викладати [Лек.]'], percentType)
 singleMark('want-to-continue-practic', teacherData.singleMark['Викладач продовжував викладати [Прак.]'], percentType)
-singleMark('meaningfulness', teacherData.singleMark['Чи володіє матеріалом'], markType)
+singleMark('meaningfulness', teacherData.singleMark['Змістовність занять'], markType)
 singleMark('grading-system', teacherData.singleMark['Система оцінювання'], markType)
 singleMark('cheating-lector-practic', (teacherData.radial['Бали без знань [Лек.]'] + teacherData.radial['Бали без знань [Прак.]']) / 2, markType)
 singleMark('cheating-lector', teacherData.singleMark['Бали без знань [Лек.]'], markType)
